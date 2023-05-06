@@ -63,7 +63,12 @@ const ChatBot = ({ chatbotAnswers, setchatbotAnswers, setOpen, open, handleClose
               value={chatbotAnswers[que]}
             />
           ))}
-          <Button onClick={handleClose} sx={{ width: "100px", backgroundColor: "rgb(94,53,177)" }} variant="contained">
+          <Button
+            type="null"
+            onClick={handleClose}
+            sx={{ width: "100px", backgroundColor: "rgb(94,53,177)" }}
+            variant="contained"
+          >
             Save
           </Button>
         </Box>
