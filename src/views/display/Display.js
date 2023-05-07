@@ -1,14 +1,7 @@
 import { useWeb3React } from "@web3-react/core";
 import { ethers } from "ethers";
 import React, { useEffect, useState } from "react";
-import {
-  AtSign,
-  Calendar,
-  GitHub,
-  Linkedin,
-  MapPin,
-  Paperclip,
-} from "react-feather";
+import { AtSign, Calendar, GitHub, Linkedin, MapPin, Paperclip } from "react-feather";
 import { contractabi, contractadd } from "../ConnectWallet/contractinfo";
 import styles from "./Display.module.css";
 import { useContextAPI } from "index";
@@ -25,20 +18,7 @@ import { IconButton } from "@mui/material";
 // asd
 function timeConverter(UNIX_timestamp) {
   var a = new Date(UNIX_timestamp * 1000);
-  var months = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-  ];
+  var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
   var year = a.getFullYear();
   var month = months[a.getMonth()];
   var date = a.getDate();
@@ -52,16 +32,7 @@ function timeConverter(UNIX_timestamp) {
   const correctDate = date <= 9 ? "0" + date : date;
   const correctHour = hour <= 9 ? "0" + hour : hour;
   const correctMint = min <= 9 ? "0" + min : min;
-  var timeforinput =
-    year +
-    "-" +
-    getCorrectMonth +
-    "-" +
-    correctDate +
-    "T" +
-    correctHour +
-    ":" +
-    correctMint;
+  var timeforinput = year + "-" + getCorrectMonth + "-" + correctDate + "T" + correctHour + ":" + correctMint;
   return { timeshow, timeforinput };
   // 2018-06-12T19:30
 }
@@ -156,7 +127,7 @@ const Display = () => {
   }, []);
 
   const [Loading, setLoading] = useState(false);
- 
+
   const [condidatesCVS, setCondidatesCVS] = useState([]);
 
   const strings = [1, 2, 3, 4, 5, 6, 7, 8, 9, 20];
@@ -165,24 +136,17 @@ const Display = () => {
 
   const totalPages = Math.ceil(condidatesCVS.length / CVsPerPage);
 
-  const currentPageData = condidatesCVS.slice(
-    (currentPage - 1) * CVsPerPage,
-    currentPage * CVsPerPage
-  );
+  const currentPageData = condidatesCVS.slice((currentPage - 1) * CVsPerPage, currentPage * CVsPerPage);
 
   //   console.log(condidatesCVS && condidatesCVS[0]);
   const call = async () => {
     if (active && account && LoggedInUser.email && !LoggedInUser.isCand) {
       console.log("admin");
       const signer = await library?.getSigner(account);
-      const cont = await new ethers.Contract(
-        contractadd,
-        contractabi,
-        signer
-      );
+      const cont = await new ethers.Contract(contractadd, contractabi, signer);
       const res = await cont.getCandCvs();
       console.log({ res });
-  
+
       let imgsarr = [];
       for (const item of res) {
         console.log({ item });
@@ -194,7 +158,7 @@ const Display = () => {
       setCondidatesCVS(imgsarr);
     }
   };
-  
+
   useEffect(() => {
     call();
   }, []);
@@ -214,7 +178,7 @@ const Display = () => {
       {/* {LoggedInUser.email && LoggedInUser.isCand ? "cad" :  "admin"} */}
       {active && LoggedInUser.email && LoggedInUser.isCand && (
         <>
-        cand <br />
+          cand <br />
           <img style={{ margin: "10px" }} width={500} src={userCV} alt="Create your CV" />
           {/* {!DataMessage.exists && DataMessage.message} */}
           {/* {DataMessage.exists && (
@@ -348,7 +312,7 @@ const Display = () => {
       )}
       {active && LoggedInUser.email && !LoggedInUser.isCand && (
         <>
-        admin
+          {/* admin
           <div>
             <button
               disabled={currentPage === 1}
@@ -360,15 +324,11 @@ const Display = () => {
               onClick={() => setCurrentPage(currentPage + 1)}>
               Next
             </button>
-          </div>
+          </div> */}
 
-          {condidatesCVS && currentPageData.map((string) => (
-              <>
-                  <TransitionsModal
-                    imgLink={string}
-                  />
-              </>
-            ))}
+          <div style={{ display: "flex", flexWrap: "wrap" }}>
+            {condidatesCVS && currentPageData.map((string) => <TransitionsModal imgLink={string} />)}
+          </div>
         </>
       )}
     </div>
@@ -412,7 +372,8 @@ function TransitionsModal({ imgLink }) {
           backdrop: {
             timeout: 500,
           },
-        }}>
+        }}
+      >
         <Fade in={open}>
           <Box sx={style}>
             {/* <IconButton

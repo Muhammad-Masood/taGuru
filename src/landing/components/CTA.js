@@ -14,14 +14,14 @@ const CTA = () => (
 
     <div className={`${styles.flexCenter} sm:ml-10 ml-0 sm:mt-0 mt-10`}>
       <button
-        style={{ color: "white", backgroundColor: "#62C4C8 !important" }}
+        style={{ color: "white", backgroundColor: "#62C4C8" }}
         className={`py-4 px-6 font-poppins font-medium text-[18px] text-primary bg-blue-gradient rounded-[10px] outline-none ${styles}`}
       >
         Book a consultation
       </button>
       <button
-        style={{ color: "white", backgroundColor: "#62C4C8 !important" }}
-        className={`py-4 px-6 font-poppins font-medium text-[18px] text-primary bg-blue-gradient rounded-[10px] outline-none ${styles}`}
+        style={{ color: "white", backgroundColor: "#62C4C8", marginLeft: "15px" }}
+        className={`py-4  px-6 font-poppins font-medium text-[18px] text-primary bg-blue-gradient rounded-[10px] outline-none ${styles}`}
       >
         Contact us
       </button>

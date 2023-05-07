@@ -42,6 +42,11 @@ const Navbar = () => {
             </a>
           </div>
         ))}
+        <div style={{ marginLeft: "20px", color: "white", fontSize: "16px" }}>
+          <a target="_blank" href="https://discordapp.com/channels/@me/1019903861848297572/1104472084433862746">
+            Whitepaper
+          </a>
+        </div>
         <div className="ml-5 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
           <a href="/login">Login</a>
         </div>
@@ -71,10 +76,15 @@ const Navbar = () => {
                 </a>
               </div>
             ))}
+            <div style={{ color: "white", fontSize: "20px" }}>
+              <a target="_blank" href="https://discordapp.com/channels/@me/1019903861848297572/1104472084433862746">
+                Whitepaper
+              </a>
+            </div>
+            <div style={{ color: "white", fontSize: "20px" }}>
+              <a href="/login">Login</a>
+            </div>
           </ul>
-          <div style={{ color: "white", fontSize: "20px" }}>
-            <a href="/login">Login</a>
-          </div>
         </div>
       </div>
     </nav>

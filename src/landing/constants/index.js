@@ -24,10 +24,6 @@ export const navLinks = [
     id: "aboutus",
     title: "Aboutus",
   },
-  {
-    id: "whitepaper",
-    title: "Whitepaper",
-  },
   
 ];
 

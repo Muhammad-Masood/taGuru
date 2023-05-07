@@ -3,7 +3,7 @@ import styles, { layout } from "../style";
 import video1 from "../assets/promoVideo.mp4";
 import "./Billings.css";
 const Billing = () => (
-  <div>
+  <div id="aboutus">
     <video
       className="video"
       controls
