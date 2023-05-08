@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import { close, logo, menu } from "../assets";
-
+import "./Navbar.css"
 import { navLinks } from "../constants";
 
 const Navbar = () => {
@@ -43,11 +43,14 @@ const Navbar = () => {
           </div>
         ))}
         <div style={{ marginLeft: "20px", color: "white", fontSize: "16px" }}>
-          <a target="_blank" href="https://discordapp.com/channels/@me/1019903861848297572/1104472084433862746">
+          <a target="_blank" href="https://muhammads-organization-8.gitbook.io/ta-guru/">
             Whitepaper
           </a>
         </div>
-        <div className="ml-5 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
+        <div
+          style={{ color: "white", backgroundColor: "#62C4C8"}}
+          className="login ml-5 bg-white text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+        >
           <a href="/login">Login</a>
         </div>
       </ul>

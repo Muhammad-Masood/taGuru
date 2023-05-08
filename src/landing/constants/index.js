@@ -24,7 +24,6 @@ export const navLinks = [
     id: "aboutus",
     title: "Aboutus",
   },
-  
 ];
 
 export const features = [
@@ -54,23 +53,24 @@ export const features = [
 export const feedback = [
   {
     id: "feedback-1",
-    content: "Money is only a tool. It will take you wherever you wish, but it will not replace you as the driver.",
-    name: "Herman Jensen",
-    title: "Founder & Leader",
+    content: "Using TA Guru made my job search much easier and more efficient than other platforms I've used before.",
+    name: "John Smith",
+    title: "",
     img: people01,
   },
   {
     id: "feedback-2",
-    content: "Money makes your life easier. If you're lucky to have it, you're lucky.",
-    name: "Steve Mark",
-    title: "Founder & Leader",
+    content:
+      "The AI-assisted candidate screening on TA Guru allowed us to save time and resources while still finding the best fit for our company",
+    name: "Acme Inc",
+    title: "",
     img: people02,
   },
   {
     id: "feedback-3",
-    content: "It is usually people in the money business, finance, and international trade that are really rich.",
-    name: "Kenn Gallagher",
-    title: "Founder & Leader",
+    content: "I appreciate the transparency and fairness of the recruitment process on TA Guru, it's refreshing.",
+    name: "Emily Jones",
+    title: "",
     img: people03,
   },
 ];

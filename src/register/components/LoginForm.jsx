@@ -101,7 +101,13 @@ const LoginForm = ({ setAuth }) => {
 
       const loggedindata = { name, email, phoneNumber, isCand };
       console.log({ loggedindata });
-      setLoggedInUser(loggedindata);
+      setLoggedInUser({ name, email, phoneNumber, isCand });
+      localStorage.setItem(
+        "loggedUser",
+        JSON.stringify({ name: name, email: email, phoneNumber: phoneNumber.toString(), isCand: isCand })
+      );
+      console.log("loginForm herer->>", LoggedInUser);
+
       navigate("/display/Display", { replace: true });
     } catch (error) {
       console.log(error.reason || error.message);

@@ -118,14 +118,7 @@ const MainRoutes = {
       path: "sample-page",
       element: <SamplePage />,
     },
-    {
-      path: "login",
-      element: <Login />,
-    },
-    {
-      path: "signup",
-      element: <Signup />,
-    },
+    
   ],
 };
 

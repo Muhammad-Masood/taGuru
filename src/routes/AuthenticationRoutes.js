@@ -29,6 +29,14 @@ const AuthenticationRoutes = {
       path: "/",
       element: <Landing />,
     },
+    {
+      path: "login",
+      element: <Login />,
+    },
+    {
+      path: "signup",
+      element: <Signup />,
+    },
     // {
     //     path: '/',
     //     element: <HomeLadningPage />

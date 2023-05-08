@@ -117,8 +117,20 @@ const SignupForm = ({ auth, setAuth }) => {
               aria-labelledby="demo-form-control-label-placement"
               name="role"
             >
-              <FormControlLabel value={true} control={<Radio />} label="Candidate" labelPlacement="Candidate" />
-              <FormControlLabel value={false} control={<Radio />} label="Admin" labelPlacement="Admin" />
+              <FormControlLabel
+                style={{ color: "white" }}
+                value={true}
+                control={<Radio />}
+                label="Candidate"
+                labelPlacement="Candidate"
+              />
+              <FormControlLabel
+                style={{ color: "white" }}
+                value={false}
+                control={<Radio />}
+                label="Admin"
+                labelPlacement="Admin"
+              />
             </RadioGroup>
           </FormControl>
           <Stack
@@ -131,6 +143,8 @@ const SignupForm = ({ auth, setAuth }) => {
             <TextField
               fullWidth
               label="First name"
+              variant="filled"
+              style={{ backgroundColor: "white", borderRadius: "5px" }}
               {...getFieldProps("firstName")}
               error={Boolean(touched.firstName && errors.firstName)}
               helperText={touched.firstName && errors.firstName}
@@ -138,6 +152,8 @@ const SignupForm = ({ auth, setAuth }) => {
 
             <TextField
               fullWidth
+              variant="filled"
+              style={{ backgroundColor: "white", borderRadius: "5px" }}
               label="Last name"
               {...getFieldProps("lastName")}
               error={Boolean(touched.lastName && errors.lastName)}
@@ -151,6 +167,8 @@ const SignupForm = ({ auth, setAuth }) => {
               autoComplete="username"
               type="email"
               label="Email address"
+              variant="filled"
+              style={{ backgroundColor: "white", borderRadius: "5px" }}
               {...getFieldProps("email")}
               error={Boolean(touched.email && errors.email)}
               helperText={touched.email && errors.email}
@@ -160,12 +178,20 @@ const SignupForm = ({ auth, setAuth }) => {
               fullWidth
               type="phoneNum"
               label="Phone Number"
+              variant="filled"
+              style={{ backgroundColor: "white", borderRadius: "5px" }}
               value={formik.values.phoneNum}
               {...getFieldProps("phoneNum")}
               error={Boolean(touched.phoneNum && errors.phoneNum)}
               helperText={touched.phoneNum && errors.phoneNum}
             />
-            <TextField fullWidth label="Last name" value={account || "connect your wallet"} />
+            <TextField
+              variant="filled"
+              style={{ backgroundColor: "white", borderRadius: "5px" }}
+              fullWidth
+              label="Wallet Address"
+              value={account || "connect your wallet"}
+            />
             {/* <PhoneInput
           international
           defaultCountry="US"
@@ -213,7 +239,7 @@ const SignupForm = ({ auth, setAuth }) => {
               size="large"
               type="null"
               variant="contained"
-             
+
               // loading={isSubmitting}
             >
               Sign up

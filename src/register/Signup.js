@@ -7,10 +7,11 @@ import SocialAuth from "./components/SocialAuth";
 import SignupForm from "./components/SignupForm";
 import Logo from "./components/Logo";
 import { motion } from "framer-motion";
+import BasicExample from "views/Header/Navbar";
 
 //////////////////////////////////
 const RootStyle = styled("div")({
-  background: "rgb(249, 250, 251)",
+  background: "radial-gradient(circle at 10% 20%, rgb(0, 0, 0) 0%, rgb(64, 64, 64) 90.2%)",
   height: "100vh",
   display: "grid",
   placeItems: "center",
@@ -27,7 +28,8 @@ const ContentStyle = styled(Box)({
   display: "flex",
   justifyContent: "center",
   flexDirection: "column",
-  background: "#fff",
+  borderRadius: "20px",
+  background: "radial-gradient(circle at 10% 20%, rgb(87, 108, 117) 0%, rgb(37, 50, 55) 100.2%)",
 });
 
 let easing = [0.6, -0.05, 0.01, 0.99];
@@ -51,12 +53,15 @@ const Signup = () => {
   const [auth, setAuth] = useState(false);
   return (
     <RootStyle>
+      <div style={{ position: "absolute", top: "5%", right: "5%" }}>
+        <BasicExample />
+      </div>
       <Container maxWidth="sm">
         <ContentStyle>
           <HeadingStyle component={motion.div} {...fadeInUp}>
             {/* <Logo /> */}
 
-            <Typography sx={{ color: "text.secondary", mb: 5 }}>Enter your details below.</Typography>
+            <Typography sx={{ color: "text.secondary", mb: 5, color: "white" }}>Create New Account</Typography>
           </HeadingStyle>
 
           {/* <Box component={motion.div} {...fadeInUp}>
@@ -76,20 +81,20 @@ const Signup = () => {
             {...fadeInUp}
             variant="body2"
             align="center"
-            sx={{ color: "text.secondary", mt: 2 }}
+            sx={{ color: "text.secondary", mt: 2, color: "white" }}
           >
             By registering, I agree to{" "}
-            <Link underline="always" color="text.primary" href="#">
+            <Link underline="always" href="#">
               Terms of Service
             </Link>{" "}
             &{" "}
-            <Link underline="always" color="text.primary" href="#">
+            <Link underline="always" href="#">
               Privacy Policy
             </Link>
             .
           </Typography>
 
-          <Typography component={motion.p} {...fadeInUp} variant="body2" align="center" sx={{ mt: 3 }}>
+          <Typography component={motion.p} {...fadeInUp} variant="body2" align="center" sx={{ mt: 3, color: "white" }}>
             Have an account?{" "}
             <Link variant="subtitle2" component={RouterLink} to="/login">
               Login

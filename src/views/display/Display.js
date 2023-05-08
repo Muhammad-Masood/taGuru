@@ -118,14 +118,6 @@ const Display = () => {
     // }
   };
 
-  useEffect(() => {
-    if (active && account) {
-      GetDisplayData();
-    } else {
-      setDataMessage({ exists: false, message: "Connect your wallet" });
-    }
-  }, []);
-
   const [Loading, setLoading] = useState(false);
 
   const [condidatesCVS, setCondidatesCVS] = useState([]);
@@ -140,7 +132,9 @@ const Display = () => {
 
   //   console.log(condidatesCVS && condidatesCVS[0]);
   const call = async () => {
-    if (active && account && LoggedInUser.email && !LoggedInUser.isCand) {
+    const user = JSON.parse(localStorage.getItem("loggedUser"));
+    setLoggedInUser(user);
+    if (active && account && LoggedInUser.email && LoggedInUser.isCand == false) {
       console.log("admin");
       const signer = await library?.getSigner(account);
       const cont = await new ethers.Contract(contractadd, contractabi, signer);
@@ -176,9 +170,8 @@ const Display = () => {
   return (
     <div>
       {/* {LoggedInUser.email && LoggedInUser.isCand ? "cad" :  "admin"} */}
-      {active && LoggedInUser.email && LoggedInUser.isCand && (
+      {active && LoggedInUser?.email && LoggedInUser?.isCand == true && (
         <>
-          cand <br />
           <img style={{ margin: "10px" }} width={500} src={userCV} alt="Create your CV" />
           {/* {!DataMessage.exists && DataMessage.message} */}
           {/* {DataMessage.exists && (
@@ -310,7 +303,7 @@ const Display = () => {
           )} */}
         </>
       )}
-      {active && LoggedInUser.email && !LoggedInUser.isCand && (
+      {active && LoggedInUser.email && LoggedInUser.isCand == false && (
         <>
           {/* admin
           <div>

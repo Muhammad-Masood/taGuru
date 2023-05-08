@@ -66,22 +66,22 @@ const Create = () => {
       // const urlcv = `https://raghav.infura-ipfs.io/ipfs/${pathcv}`;
       // console.log(urlcv);
       !active && alert("Connect wallet");
-      
+
       console.log({ values });
       await takeScreenshot(ref1.current);
-      // await takeScreenshot2(liveDataRef.current);
+    // await takeScreenshot2(liveDataRef.current);
       // await getLiveDataImage()
       const resultqna = await ipfs.add(image);
       // const resultcv = await ipfs.add(image2);
       await console.log("result", resultqna);
       const pathqna = await resultqna.path.replace(/"|'/g, "");
       const urlqna = `https://raghav.infura-ipfs.io/ipfs/${pathqna}`;
-      
+
       console.log(urlqna);
       setOpen(false);
-      
+
       html2canvas(document.getElementById("livepreview")).then(async (canvas) => {
-        const imgurl = canvas.toDataURL()
+        const imgurl = canvas.toDataURL();
         console.log(imgurl);
         const resultresumeprev = await ipfs.add(imgurl);
         const pathresumepreview = await resultresumeprev.path.replace(/"|'/g, "");
@@ -92,13 +92,10 @@ const Create = () => {
         const cont = await new ethers.Contract(contractadd, contractabi, signer);
         console.log({ cont });
 
-
         console.log(cvurl, [[chatbotAnswers], urlqna]);
         const createCall = await cont.inputCvDet(cvurl, [[chatbotAnswers], urlqna]);
         await createCall.wait();
-
-
-      })
+      });
 
       // const createCall = await cont.inputCvDet(PersDetails, Employement, Education, urlqna, [[chatbotAnswers], urlqna]);
       // await createCall.wait();
@@ -156,44 +153,48 @@ const Create = () => {
   // forms
   const basicInfoBody = (
     <div className={styles.detail}>
-      <div className={styles.row}>
-        <InputControl
-          label="Name"
-          placeholder="Enter your full"
-          value={values.persdetName}
-          onChange={(event) => {
-            setValues((prev) => ({ ...prev, persdetName: event.target.value }));
-          }}
-        />
-        <InputControl
-          label="Address"
-          value={account}
-          placeholder=""
-          onChange={(event) => setValues((prev) => ({ ...prev, persdetAddress: event.target.value }))}
-          disabled
-        />
-      </div>
+      <form>
+        <div className={styles.row}>
+          <InputControl
+            label="Name"
+            placeholder="Enter your full"
+            value={values.persdetName}
+            onChange={(event) => {
+              setValues((prev) => ({ ...prev, persdetName: event.target.value }));
+            }}
+          />
+          <InputControl
+            label="Address"
+            value={account}
+            placeholder=""
+            onChange={(event) => setValues((prev) => ({ ...prev, persdetAddress: event.target.value }))}
+            disabled
+          />
+        </div>
 
-      <div className={styles.row}>
-        <InputControl
-          label="Email"
-          value={values.persdetEmail}
-          placeholder="Enter your email"
-          onChange={(event) => setValues((prev) => ({ ...prev, persdetEmail: event.target.value }))}
-        />
-        <InputControl
-          label="Enter phone"
-          value={values.persdetPhone}
-          placeholder="Enter your phone number"
-          onChange={(event) => setValues((prev) => ({ ...prev, persdetPhone: event.target.value }))}
-        />
-      </div>
+        <div className={styles.row}>
+          <InputControl
+            label="Email"
+            type="email"
+            value={values.persdetEmail}
+            placeholder="Enter your email"
+            onChange={(event) => setValues((prev) => ({ ...prev, persdetEmail: event.target.value }))}
+          />
+          <InputControl
+            type="number"
+            label="Enter phone"
+            value={values.persdetPhone}
+            placeholder="Enter your phone number"
+            onChange={(event) => setValues((prev) => ({ ...prev, persdetPhone: event.target.value }))}
+          />
+        </div>
 
-      <div style={{ display: "flex", justifyContent: "space-evenly", alignItems: "left" }}>
-        <button type="button" onClick={nextSection}>
-          next
-        </button>
-      </div>
+        <div style={{ marginTop: "15px", display: "flex", justifyContent: "space-evenly", alignItems: "left" }}>
+          <button type="submit" onClick={nextSection}>
+            next
+          </button>
+        </div>
+      </form>
     </div>
   );
 
@@ -522,7 +523,7 @@ const Create = () => {
             </div>
             {/* <img width={"100px"} src={image2} alt={"Screenshot"} /> */}
             <div>
-              <div ref={liveDataRef}  style={{background:"white"}}>
+              <div ref={liveDataRef} style={{ background: "white" }}>
                 <LiveDisplay values={values} />
               </div>
             </div>

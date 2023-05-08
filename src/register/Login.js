@@ -6,10 +6,11 @@ import LoginForm from "./components/LoginForm";
 import SocialAuth from "./components/SocialAuth";
 import Logo from "./components/Logo";
 import { motion } from "framer-motion";
+import BasicExample from "views/Header/Navbar";
 
 //////////////////////////////////
 const RootStyle = styled("div")({
-  background: "rgb(249, 250, 251)",
+  background: "radial-gradient(circle at 10% 20%, rgb(0, 0, 0) 0%, rgb(64, 64, 64) 90.2%)",
   height: "100vh",
   display: "grid",
   placeItems: "center",
@@ -24,9 +25,10 @@ const ContentStyle = styled("div")({
   padding: 25,
   margin: "auto",
   display: "flex",
+  borderRadius: "20px",
   justifyContent: "center",
   flexDirection: "column",
-  background: "#fff",
+  background: "radial-gradient(circle at 10% 20%, rgb(87, 108, 117) 0%, rgb(37, 50, 55) 100.2%)",
 });
 
 let easing = [0.6, -0.05, 0.01, 0.99];
@@ -49,19 +51,20 @@ const fadeInUp = {
 const Login = ({ setAuth }) => {
   return (
     <RootStyle>
+      <div style={{ position: "absolute", top: "5%", right: "5%" }}>
+        <BasicExample />
+      </div>
       <Container maxWidth="sm">
         <ContentStyle>
           <HeadingStyle component={motion.div} {...fadeInUp}>
             {/* <Logo /> */}
-            <Typography sx={{ color: "text.secondary", mb: 5 }}>
-              Login to your account
-            </Typography>
+            <Typography sx={{ color: "text.secondary", mb: 5, color: "white" }}>Login to your account</Typography>
           </HeadingStyle>
 
           {/* <Box component={motion.div} {...fadeInUp}>
             <SocialAuth />
           </Box> */}
-{/* 
+          {/* 
           <Divider sx={{ my: 3 }} component={motion.div} {...fadeInUp}>
             <Typography variant="body2" sx={{ color: "text.secondary" }}>
               OR
@@ -70,13 +73,7 @@ const Login = ({ setAuth }) => {
 
           <LoginForm setAuth={setAuth} />
 
-          <Typography
-            component={motion.p}
-            {...fadeInUp}
-            variant="body2"
-            align="center"
-            sx={{ mt: 3 }}
-          >
+          <Typography component={motion.p} {...fadeInUp} variant="body2" align="center" sx={{ mt: 3, color: "white" }}>
             Don’t have an account?{" "}
             <Link variant="subtitle2" component={RouterLink} to="/signup">
               Sign up

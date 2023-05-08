@@ -51,6 +51,14 @@ const ChatBot = ({ chatbotAnswers, setchatbotAnswers, setOpen, open, handleClose
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
+          <Button
+            variant="contained"
+            type="null"
+            style={{ position: "absolute", right: "1%", backgroundColor: "red" }}
+            onClick={() => setOpen(false)}
+          >
+            X
+          </Button>
           {ques.map((que) => (
             <TextField
               sx={{ m: 1, width: "50ch" }}
@@ -65,7 +73,10 @@ const ChatBot = ({ chatbotAnswers, setchatbotAnswers, setOpen, open, handleClose
           ))}
           <Button
             type="null"
-            onClick={handleClose}
+            onClick={() => {
+              handleClose();
+              handleClose();
+            }}
             sx={{ width: "100px", backgroundColor: "rgb(94,53,177)" }}
             variant="contained"
           >
