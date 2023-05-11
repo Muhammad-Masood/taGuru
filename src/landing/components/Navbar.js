@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-import { close, logo, menu } from "../assets";
-import "./Navbar.css"
+import { close, logo, menu, logo_ta } from "../assets";
+import "./Navbar.css";
 import { navLinks } from "../constants";
 
 const Navbar = () => {
@@ -10,7 +10,7 @@ const Navbar = () => {
 
   return (
     <nav className="w-full flex py-6 justify-between items-center navbar">
-      <img src={logo} alt="hoobank" className="w-[auto] h-[60px]" />
+      <img src={logo_ta} alt="hoobank" className="w-[auto] h-[100px]" />
       <svg
         className="w-[124px] h-[32px]"
         version="1.0"
@@ -48,7 +48,7 @@ const Navbar = () => {
           </a>
         </div>
         <div
-          style={{ color: "white", backgroundColor: "#62C4C8"}}
+          style={{ color: "white", backgroundColor: "#62C4C8" }}
           className="login ml-5 bg-white text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
         >
           <a href="/login">Login</a>

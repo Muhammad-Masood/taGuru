@@ -26,7 +26,7 @@ function timeConverter(UNIX_timestamp) {
   // 2018-06-12T19:30
 }
 
-const LiveDisplay = ({ values, ref }) => {
+const LiveDisplay = ({ values, ref, workExp }) => {
   const { active, account, library } = useWeb3React();
 
   const [UserData, setUserData] = useState("");
@@ -104,73 +104,68 @@ const LiveDisplay = ({ values, ref }) => {
   }, [account]);
 
   return (
-    <div >
-      <div>
-        <div id="livepreview" className={styles.container}>
-          <div className={styles.header}>
-            <p className={styles.heading}>{values?.persdetName}</p>
-            <p className={styles.subHeading}>{account}</p>
-            <p className={`text-dark`}>{values?.personalStatement}</p>
-            <div className={styles.links}>
-              <a className={styles.link} href={`mailto:${values?.persdetEmail}`}>
-                <AtSign /> {values?.persdetEmail}
-              </a>
-              <a className={styles.link} href={`tel:${values?.persdetPhone}`}>{values?.persdetPhone}</a>
-              {/* <a className={styles.link}>
+    <div>
+      <div id="livepreview" className={styles.container}>
+        <div className={styles.header}>
+          <p className={styles.heading}>{values?.persdetName}</p>
+          <p className={styles.subHeading}>{account}</p>
+          <p className={`text-dark`}>{values?.personalStatement}</p>
+          <div className={styles.links}>
+            <a className={styles.link} href={`mailto:${values?.persdetEmail}`}>
+              <AtSign /> {values?.persdetEmail}
+            </a>
+            <a className={styles.link} href={`tel:${values?.persdetPhone}`}>
+              {values?.persdetPhone}
+            </a>
+            {/* <a className={styles.link}>
                 <GitHub /> asdasd
               </a> */}
-            </div>
           </div>
+        </div>
 
-          <div className={styles.main}>
-            <div className={styles.col1}>
-              <div key={"workexp"} draggable className={`${styles.section}`}>
-                <div className={styles.sectionTitle}>Work Experience</div>
-                <div className={styles.content}>
+        <div className={styles.main}>
+          <div className={styles.col1}>
+            <div key={"workexp"} draggable className={`${styles.section}`}>
+              <div className={styles.sectionTitle}>Work Experience</div>
+              {workExp.map((e, index) => {
+                return (
                   <div className={`mt-3 ${styles.item}`}>
-                    <p className={`p-0 m-0 ${styles.title}`}>{values?.jobTitle}</p>
-                    <p className={`p-0 m-0 ${styles.subTitle}`}>{values?.companyName}</p>
-                    <p className={`p-0 m-0`}>location: {values?.companyLocation}</p>
+                    <p style={{ fontWeight: "bold",fontSize:"18px",fontFamily:"monospace" }}>Job {index + 1}</p>
+                    <p className={`p-0 m-0 ${styles.title}`}>{e?.jobTitle}</p>
+                    <p className={`p-0 m-0 ${styles.subTitle}`}>{e?.companyName}</p>
+                    <p className={`p-0 m-0`}>location: {e?.companyLocation}</p>
                     <i className="border-bottom">Achievements and Responsibilities:</i>
                     <div className={`p-0 m-0 ${styles.content}`}>
-                      <p className={styles.overview}>{values?.achvResp}</p>
+                      <p className={styles.overview}>{e?.achvResp}</p>
                     </div>
-                    {/* <a className={styles.link} href="">
-                  <Paperclip />
-                  certificate link
-                </a> */}
+
                     <div className={styles.date}>
-                      <Calendar /> {values?.companystartDate}-{values?.companyendDate}
+                      <Calendar /> {e?.companystartDate} to {e?.companyendDate}
                     </div>
                     <p className={styles.date}>
                       <MapPin /> Remote
                     </p>
-                    {/* <ul className={styles.points}>
-                    <li className={styles.point}>
-                      asdasd
-                    </li>
-                    <li className={styles.point}>
-                      asdasd
-                    </li>
-                </ul> */}
                   </div>
-                  <div key={"education"} draggable className={`${styles.section} `}>
-                    <div className={styles.sectionTitle}>Education</div>
-                    <div className={styles.content}>
-                      <div className={`p-0 mt-2 ${styles.item}`}>
-                        <p className={`p-0 m-0 ${styles.title}`}>{values?.SchoolorcollegeDesc}</p>
-                        <p className={`p-0 m-0 ${styles.subTitle}`}>{values?.SchoolorcollegeName}</p>
-                        <div className={styles.date}>
-                          <Calendar /> {values?.SchoolorcollegestartDate}-{values?.SchoolorcollegeEndDate}
-                        </div>
+                );
+              })}
+              <div className={styles.content}>
+                <div key={"education"} draggable className={`${styles.section} `}>
+                  <div className={styles.sectionTitle}>Education</div>
+                  <div className={styles.content}>
+                    <div className={`p-0 mt-2 ${styles.item}`}>
+                      <p className={`p-0 m-0 ${styles.title}`}>{values?.SchoolorcollegeDesc}</p>
+                      <p className={`p-0 m-0 ${styles.subTitle}`}>{values?.SchoolorcollegeName}</p>
+                      <div className={styles.date}>
+                        <Calendar /> {values?.SchoolorcollegestartDate}-{values?.SchoolorcollegeEndDate}
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div className={styles.col2}>
-              {/* <div
+          </div>
+          <div className={styles.col2}>
+            {/* <div
                   key={"achievement"}
                   draggable
                   className={`${styles.section} `}>
@@ -183,28 +178,27 @@ const LiveDisplay = ({ values, ref }) => {
                   </div>
                 </div> */}
 
-              <div key={"summary"} draggable className={`${styles.section} `}>
-                <div className={styles.sectionTitle}>Summary</div>
-                <div className={styles.content}>
-                  <p className={styles.overview}>{values?.summary}</p>
-                </div>
+            <div key={"summary"} draggable className={`${styles.section} `}>
+              <div className={styles.sectionTitle}>Summary</div>
+              <div className={styles.content}>
+                <p className={styles.overview}>{values?.summary}</p>
               </div>
-              <div key={"other"} draggable className={`${styles.section}`}>
-                <div className={styles.sectionTitle}>Others</div>
-                <div className={styles.content}>
-                  <p className={styles.overview}>
-                    <h5 className="m-0 p-0 fw-bold" style={{ fontSize: "15px" }}>
-                      Hobbies
-                    </h5>
-                    <p className="p-0 m-0">{values?.hobbies}</p>
-                  </p>
-                  <p className={styles.overview}>
-                    <h5 className="m-0 p-0 fw-bold" style={{ fontSize: "15px" }}>
-                      Other Skills
-                    </h5>
-                    <p className="p-0 m-0">{values?.OtherkeysSkills}</p>
-                  </p>
-                </div>
+            </div>
+            <div key={"other"} draggable className={`${styles.section}`}>
+              <div className={styles.sectionTitle}>Others</div>
+              <div className={styles.content}>
+                <p className={styles.overview}>
+                  <h5 className="m-0 p-0 fw-bold" style={{ fontSize: "15px" }}>
+                    Hobbies
+                  </h5>
+                  <p className="p-0 m-0">{values?.hobbies}</p>
+                </p>
+                <p className={styles.overview}>
+                  <h5 className="m-0 p-0 fw-bold" style={{ fontSize: "15px" }}>
+                    Other Skills
+                  </h5>
+                  <p className="p-0 m-0">{values?.OtherkeysSkills}</p>
+                </p>
               </div>
             </div>
           </div>

@@ -11,9 +11,33 @@ import LiveDisplay from "../LiveDisplay/LiveDisplay";
 import ChatBot from "./chatBot/ChatBot";
 import { create } from "ipfs-http-client";
 import { useScreenshot } from "use-react-screenshot";
-import { Button, List, ListItem, TextField } from "@mui/material";
+import { pink } from "@mui/material/colors";
+import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  Button,
+  IconButton,
+  List,
+  ListItem,
+  TextField,
+  Typography,
+} from "@mui/material";
+import ExpandMoreIcon from "@mui/icons-material/AddCircle";
+import DeleteIcon from "@mui/icons-material/Delete";
+
 import html2canvas from "html2canvas";
 const Create = () => {
+  const workExpSchema = {
+    jobTitle: "",
+    companyName: "",
+    companyLocation: "",
+    companystartDate: "",
+    companyendDate: "",
+    achvResp: "",
+  };
+  const [workExp, setworkExp] = useState([workExpSchema]);
+
   const [values, setValues] = useState({
     // pers details
     persdetName: "",
@@ -22,13 +46,18 @@ const Create = () => {
     persdetPhone: "",
 
     // work exp
+    workExp: [workExp],
+
+    //delete later
     jobTitle: "",
     companyName: "",
     companyLocation: "",
     companystartDate: "",
     companyendDate: "",
-    achvResp: "", // need to look at this one
+    achvResp: "",
+    //delete later
 
+    // need to look at this one
     // education
     SchoolorcollegeName: "",
     SchoolorcollegeDesc: "",
@@ -69,7 +98,7 @@ const Create = () => {
 
       console.log({ values });
       await takeScreenshot(ref1.current);
-    // await takeScreenshot2(liveDataRef.current);
+      // await takeScreenshot2(liveDataRef.current);
       // await getLiveDataImage()
       const resultqna = await ipfs.add(image);
       // const resultcv = await ipfs.add(image2);
@@ -120,7 +149,6 @@ const Create = () => {
   const sections = {
     basicInfo: "Personal Details",
     workExp: "Employement",
-
     education: "Education",
     achievement: "Hobbies",
     summary: "Reference",
@@ -198,60 +226,147 @@ const Create = () => {
     </div>
   );
 
+  console.log(workExp);
+  const checkErr = () => {
+    let val = true;
+    workExp.forEach((e) => {
+      if (
+        e.jobTitle.length >= 0 &&
+        e.companyName.length > 0 &&
+        e.companyLocation.length > 0 &&
+        e.companystartDate != null &&
+        e.companyendDate != null &&
+        e.achvResp != 0
+      ) {
+        val = val && true;
+      } else {
+        window.alert("Please Fill all Fields, to add New job");
+
+        val = val && false;
+      }
+    });
+    return val;
+  };
+
+  const addJob = () => {
+    let data = [...workExp];
+    if (checkErr()) {
+      data.push(workExpSchema);
+      setworkExp(data);
+    }
+  };
+
+  const removeJob = (index) => {
+    const allWorkExp = [...workExp];
+    allWorkExp.splice(index, 1);
+    setworkExp(allWorkExp);
+  };
+
   const workExpBody = (
     <div className={styles.detail}>
-      <div className={styles.row}>
-        <InputControl
-          label="Job Title"
-          placeholder="Enter job title "
-          value={values.jobTitle}
-          onChange={(event) => setValues((prev) => ({ ...prev, jobTitle: event.target.value }))}
-        />
-        <InputControl
-          label="Company Name"
-          placeholder="Enter company name"
-          value={values.companyName}
-          onChange={(event) => setValues((prev) => ({ ...prev, companyName: event.target.value }))}
-        />
-      </div>
+      {workExp.map((e, index) => {
+        return (
+          <Accordion defaultExpanded={true}>
+            <AccordionSummary
+              sx={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}
+              expandIcon={<ExpandMoreIcon />}
+            >
+              <div
+                sx={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}
+              >
+                <Typography sx={{ fontWeight: "bold" }}>
+                  Job expirence {index + 1} &emsp;{" "}
+                  <DeleteIcon
+                    onClick={(e) => {
+                      e.preventDefault();
+                      removeJob(index);
+                    }}
+                    sx={{ color: pink[500] }}
+                  />
+                </Typography>
+              </div>
+            </AccordionSummary>
+            <AccordionDetails>
+              <div className={styles.row}>
+                <InputControl
+                  label="Job Title"
+                  placeholder="Enter job title "
+                  value={e.jobTitle}
+                  onChange={(event) => {
+                    let data = [...workExp];
+                    data[index]["jobTitle"] = event.target.value;
+                    setworkExp(data);
+                  }}
+                />
+                <InputControl
+                  label="Company Name"
+                  placeholder="Enter company name"
+                  value={e.companyName}
+                  onChange={(event) => {
+                    let data = [...workExp];
+                    data[index]["companyName"] = event.target.value;
+                    setworkExp(data);
+                  }}
+                />
+              </div>
 
-      <div className={styles.row}>
-        <InputControl
-          label="Location"
-          placeholder="Enter company location"
-          value={values.companyLocation}
-          onChange={(event) => setValues((prev) => ({ ...prev, companyLocation: event.target.value }))}
-        />
-      </div>
-      <div className={styles.row}>
-        <InputControl
-          label="Start Date"
-          type="date"
-          placeholder="Enter start date of work"
-          value={values.companystartDate}
-          onChange={(event) => setValues((prev) => ({ ...prev, companystartDate: event.target.value }))}
-        />
-        <InputControl
-          label="End Date"
-          type="date"
-          placeholder="Enter end date of work"
-          value={values.companyendDate}
-          onChange={(event) => setValues((prev) => ({ ...prev, companyendDate: event.target.value }))}
-        />
-      </div>
+              <div className={styles.row}>
+                <InputControl
+                  label="Location"
+                  placeholder="Enter company location"
+                  value={e.companyLocation}
+                  onChange={(event) => {
+                    let data = [...workExp];
+                    data[index]["companyLocation"] = event.target.value;
+                    setworkExp(data);
+                  }}
+                />
+              </div>
+              <div className={styles.row}>
+                <InputControl
+                  label="Start Date"
+                  type="date"
+                  placeholder="Enter start date of work"
+                  value={e.companystartDate}
+                  onChange={(event) => {
+                    let data = [...workExp];
+                    data[index]["companystartDate"] = event.target.value;
+                    setworkExp(data);
+                  }}
+                />
+                <InputControl
+                  label="End Date"
+                  type="date"
+                  placeholder="Enter end date of work"
+                  value={e.companyendDate}
+                  onChange={(event) => {
+                    let data = [...workExp];
+                    data[index]["companyendDate"] = event.target.value;
+                    setworkExp(data);
+                  }}
+                />
+              </div>
 
-      <div className={styles.column}>
-        <label>Achievements and Responsibilities</label>
-        <InputControl
-          placeholder="Describe your achievements and responsibilities"
-          value={values.achvResp}
-          onChange={(event) => setValues((prev) => ({ ...prev, achvResp: event.target.value }))}
-        />
-      </div>
+              <div className={styles.column}>
+                <label>Achievements and Responsibilities</label>
+                <InputControl
+                  placeholder="Describe your achievements and responsibilities"
+                  value={e.achvResp}
+                  onChange={(event) => {
+                    let data = [...workExp];
+                    data[index]["achvResp"] = event.target.value;
+                    setworkExp(data);
+                  }}
+                />
+              </div>
+            </AccordionDetails>
+          </Accordion>
+        );
+      })}
 
       <div style={{ display: "flex", justifyContent: "space-evenly", alignItems: "left" }}>
-        <button type="button" onClick={nextSection}>
-          next
+        <button type="button" onClick={addJob}>
+          Add More +
         </button>
       </div>
     </div>
@@ -523,8 +638,8 @@ const Create = () => {
             </div>
             {/* <img width={"100px"} src={image2} alt={"Screenshot"} /> */}
             <div>
-              <div ref={liveDataRef} style={{ background: "white" }}>
-                <LiveDisplay values={values} />
+              <div ref={liveDataRef}>
+                <LiveDisplay workExp={workExp} values={values} />
               </div>
             </div>
           </div>

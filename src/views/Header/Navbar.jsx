@@ -79,7 +79,7 @@ function BasicExample() {
       {active ? (
         <Button
           type="null"
-          className="btn btn-primary px-4 rounded-pill  px-2 connectbutton"
+          className="btn btn-primary px-4 rounded-pill connectbutton"
           onClick={disWallet}
           variant="contained"
         >
@@ -88,7 +88,7 @@ function BasicExample() {
       ) : (
         <Button
           type="null"
-          className="btn btn-primary px-4 rounded-pill  px-2 connectbutton"
+          className="btn btn-primary px-4 rounded-pill connectbutton"
           onClick={conToMetaMask}
           variant="contained"
         >

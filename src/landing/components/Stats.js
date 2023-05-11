@@ -5,7 +5,7 @@ const Stats = () => (
   <section className={`${styles.flexCenter} flex-row flex-wrap sm:mb-20 mb-6`}>
     {stats.map((stat) => (
       <div
-        style={{ backgroundColor: "rgb(110, 39, 207)" }}
+      
         key={stat.id}
         className={`flex-1 flex justify-start items-center flex-row m-3`}
       >

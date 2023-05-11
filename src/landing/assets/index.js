@@ -26,8 +26,10 @@ import people02 from "./people02.png";
 import people03 from "./people03.png";
 import logo2 from "./logo2.svg";
 import hero from "./hero.png";
+import logo_ta from "./logo-ta.png";
 export {
   logo2,
+  logo_ta,
   hero,
   airbnb,
   bill,
