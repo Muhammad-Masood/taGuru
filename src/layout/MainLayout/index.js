@@ -76,7 +76,7 @@ const MainLayout = () => {
 
   const location = useLocation();
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex", backgroundColor: "black" }}>
       <CssBaseline />
       {/* header */}
       <AppBar
@@ -84,9 +84,7 @@ const MainLayout = () => {
         position="fixed"
         color="inherit"
         elevation={0}
-        sx={{
-          transition: leftDrawerOpened ? theme.transitions.create("width") : "none",
-        }}
+        sx={{ backgroundColor: "black", transition: leftDrawerOpened ? theme.transitions.create("width") : "none" }}
       >
         <Toolbar>
           <Header handleLeftDrawerToggle={handleLeftDrawerToggle} />
@@ -98,7 +96,7 @@ const MainLayout = () => {
         ""
       ) : (
         <Sidebar
-          sx={{}}
+          sx={{ backgroundColor: "black" }}
           drawerOpen={!matchDownMd ? leftDrawerOpened : !leftDrawerOpened}
           drawerToggle={handleLeftDrawerToggle}
         />

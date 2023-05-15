@@ -162,7 +162,14 @@ const ProfileSection = () => {
           <Transitions in={open} {...TransitionProps}>
             <Paper>
               <ClickAwayListener onClickAway={handleClose}>
-                <MainCard border={false} elevation={16} content={false} boxShadow shadow={theme.shadows[16]}>
+                <MainCard
+                  sx={{ backgroundColor: "#494F55", border: "2 px solid white" }}
+                  border={true}
+                  elevation={16}
+                  content={false}
+                  boxShadow
+                  shadow={theme.shadows[16]}
+                >
                   <Box sx={{ p: 2 }}>
                     {LoggedInUser && (
                       <>
@@ -260,14 +267,17 @@ const ProfileSection = () => {
                       >
                         {!LoggedInUser.email && (
                           <ListItemButton
-                            sx={{ borderRadius: `${customization.borderRadius}px` }}
+                            sx={{ borderRadius: `${customization.borderRadius}px`, color: "white" }}
                             selected={selectedIndex === 0}
                             onClick={(event) => handleListItemClick(event, 0, "/login")}
                           >
                             <ListItemIcon>
                               <IconSettings stroke={1.5} size="1.3rem" />
                             </ListItemIcon>
-                            <ListItemText primary={<Typography variant="body2">Login</Typography>} />
+                            <ListItemText
+                              sx={{ color: "white" }}
+                              primary={<Typography variant="body2">Login</Typography>}
+                            />
                           </ListItemButton>
                         )}
                         <ListItemButton
@@ -276,13 +286,16 @@ const ProfileSection = () => {
                           onClick={(event) => handleListItemClick(event, 1, "/user/social-profile/posts")}
                         >
                           <ListItemIcon>
-                            <IconUser stroke={1.5} size="1.3rem" />
+                            <IconUser sx={{ color: "#239ce2" }} stroke={1.5} size="1.3rem" />
                           </ListItemIcon>
                           <ListItemText
+                            sx={{ color: "white" }}
                             primary={
                               <Grid container spacing={1} justifyContent="space-between">
                                 <Grid item>
-                                  <Typography variant="body2">Social Profile</Typography>
+                                  <Typography sx={{ color: "#239ce2" }} variant="body2">
+                                    Social Profile
+                                  </Typography>
                                 </Grid>
                                 <Grid item>
                                   <Chip
@@ -305,9 +318,16 @@ const ProfileSection = () => {
                             onClick={handleLogout}
                           >
                             <ListItemIcon>
-                              <IconLogout stroke={1.5} size="1.3rem" />
+                              <IconLogout sx={{ color: "#239ce2" }} stroke={1.5} size="1.3rem" />
                             </ListItemIcon>
-                            <ListItemText primary={<Typography variant="body2">Logout</Typography>} />
+                            <ListItemText
+                              sx={{ color: "white" }}
+                              primary={
+                                <Typography sx={{ color: "#239ce2" }} variant="body2">
+                                  Logout
+                                </Typography>
+                              }
+                            />
                           </ListItemButton>
                         )}
                       </List>

@@ -266,15 +266,15 @@ const Create = () => {
     <div className={styles.detail}>
       {workExp.map((e, index) => {
         return (
-          <Accordion defaultExpanded={true}>
+          <Accordion sx={{ border: "2px solid white" }} defaultExpanded={true}>
             <AccordionSummary
               sx={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}
-              expandIcon={<ExpandMoreIcon />}
+              expandIcon={<ExpandMoreIcon sx={{ color: "white" }} />}
             >
               <div
                 sx={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}
               >
-                <Typography sx={{ fontWeight: "bold" }}>
+                <Typography sx={{ fontWeight: "bold", color: "white" }}>
                   Job expirence {index + 1} &emsp;{" "}
                   <DeleteIcon
                     onClick={(e) => {
@@ -558,6 +558,7 @@ const Create = () => {
                 {Object.keys(sections)?.map((key, index) => (
                   // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
                   <div
+                    style={{ color: "white" }}
                     className={`${styles.section} ${activeSectionKey === key ? styles.active : ""}`}
                     key={key}
                     onClick={() => {

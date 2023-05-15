@@ -10,7 +10,7 @@ import { useContextAPI } from "index";
 
 const MenuList = () => {
   const { LoggedInUser, setLoggedInUser } = useContextAPI();
-  console.log("here->>>>", LoggedInUser);
+
 
   let navItems = "";
 

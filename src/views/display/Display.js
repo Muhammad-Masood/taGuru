@@ -168,7 +168,7 @@ const Display = () => {
   console.log({ userCV });
 
   return (
-    <div>
+    <div style={{ display: "flex", justifyContent: "center", alignItems: "center", width: "100%", height: "100%" }}>
       {/* {LoggedInUser.email && LoggedInUser.isCand ? "cad" :  "admin"} */}
       {active && LoggedInUser?.email && LoggedInUser?.isCand == true && (
         <>

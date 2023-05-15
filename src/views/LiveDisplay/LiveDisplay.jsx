@@ -127,7 +127,7 @@ const LiveDisplay = ({ values, ref, workExp }) => {
           <div className={styles.col1}>
             <div key={"workexp"} draggable className={`${styles.section}`}>
               <div className={styles.sectionTitle}>Work Experience</div>
-              {workExp.map((e, index) => {
+              {workExp?.map((e, index) => {
                 return (
                   <div className={`mt-3 ${styles.item}`}>
                     <p style={{ fontWeight: "bold",fontSize:"18px",fontFamily:"monospace" }}>Job {index + 1}</p>
