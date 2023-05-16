@@ -26,6 +26,7 @@ const Header = ({ handleLeftDrawerToggle }) => {
             {/* logo & toggler button */}
             <Box
                 sx={{
+                    
                     width: 228,
                     display: 'flex',
                     [theme.breakpoints.down('md')]: {

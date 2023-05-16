@@ -34,7 +34,7 @@ const Navbar = () => {
             key={nav.id}
             className={`font-poppins font-normal cursor-pointer text-[16px] ${
               active === nav.title ? "text-white" : "text-dimWhite"
-            } ${index === navLinks.length - 1 ? "mr-0" : "mr-10"}`}
+            } ${index === navLinks.length - 1 ? "mr-0" : "mr-6"}`}
             onClick={() => setActive(nav.title)}
           >
             <a style={{ color: "white" }} href={`#${nav.id}`}>

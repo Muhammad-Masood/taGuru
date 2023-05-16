@@ -25,7 +25,7 @@ const ChatBot = ({ chatbotAnswers, setchatbotAnswers, setOpen, open, handleClose
     left: "50%",
     transform: "translate(-50%, -50%)",
     width: "80%",
-    bgcolor: "background.paper",
+    bgcolor: "white",
     boxShadow: 24,
     p: 4,
     height: "90%",
@@ -37,13 +37,6 @@ const ChatBot = ({ chatbotAnswers, setchatbotAnswers, setOpen, open, handleClose
 
   return (
     <>
-      {/* <div>
-        <button style={{ marginBottom: "10px" }} onClick={getImage}>
-          Take screenshot
-        </button>
-      </div> */}
-      {/* <img width={"100px"} src={image} alt={"Screenshot"} />
-      <Button onClick={handleOpen}>Open modal</Button> */}
       <Modal
         open={open}
         // onClose={handleClose}
@@ -61,7 +54,7 @@ const ChatBot = ({ chatbotAnswers, setchatbotAnswers, setOpen, open, handleClose
           </Button>
           {ques.map((que) => (
             <TextField
-              sx={{ m: 1, width: "50ch" }}
+              sx={{ m: 1, width: "50ch", input:{color:"black"} }}
               onChange={(e) => handleInputChange(e, que)}
               id="outlined-basic"
               label={`${que}`}
