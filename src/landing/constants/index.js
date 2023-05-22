@@ -22,7 +22,7 @@ export const navLinks = [
   },
   {
     id: "aboutus",
-    title: "Aboutus",
+    title: "About Us",
   },
 ];
 
@@ -54,7 +54,7 @@ export const feedback = [
   {
     id: "feedback-1",
     content: "Using TA Guru made my job search much easier and more efficient than other platforms I've used before.",
-    name: "John Smith",
+    name: "Helen Smith",
     title: "",
     img: people01,
   },

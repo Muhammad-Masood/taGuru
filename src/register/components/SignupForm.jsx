@@ -6,6 +6,10 @@ import {
   Stack,
   Box,
   TextField,
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  CircularProgress,
   IconButton,
   InputAdornment,
   FormControl,
@@ -20,6 +24,7 @@ import { motion } from "framer-motion";
 import { useWeb3React } from "@web3-react/core";
 import { ethers } from "ethers";
 import { contractabi, contractadd } from "views/ConnectWallet/contractinfo";
+import { SettingsAccessibilityOutlined } from "@mui/icons-material";
 // import PhoneInput from 'react-phone-number-input';
 // import 'react-phone-number-input/style.css';
 
@@ -40,6 +45,9 @@ const SignupForm = ({ auth, setAuth }) => {
 
   const [showPassword, setShowPassword] = useState(false);
   const { account, active, library } = useWeb3React();
+  const [showWaitingPopup, setShowWaitingPopup] = useState(false);
+  const [isSubmiting, setIsSubmiting] = useState(false);
+
 
   const SignupSchema = Yup.object().shape({
     firstName: Yup.string().min(2, "Too Short!").max(50, "Too Long!").required("First name required"),
@@ -78,6 +86,9 @@ const SignupForm = ({ auth, setAuth }) => {
 
       console.log({ library, active });
       try {
+        setIsSubmiting(true);
+        setShowWaitingPopup(true);
+
         const signer = await library?.getSigner(account);
         const cont = await new ethers.Contract(contractadd, contractabi, signer);
         console.log({ cont });
@@ -85,18 +96,22 @@ const SignupForm = ({ auth, setAuth }) => {
         const signun = await cont.signUpCandidate(`${firstName} ${lastName}`, phoneNum, email, userrole);
 
         await signun.wait();
+        setIsSubmiting(false);
+        setShowWaitingPopup(false);
         // setAuth(true);
         // navigate("/login", { replace: true });
 
         navigate("/login", { replace: true });
       } catch (error) {
+        setIsSubmiting(false);
+        setShowWaitingPopup(false);
         alert(error.reason || error.message);
         navigate("/login", { replace: true });
       }
     },
   });
 
-  const { errors, touched, handleSubmit, isSubmitting, getFieldProps } = formik;
+  const { errors, touched, handleSubmit, getFieldProps } = formik;
 
   return (
     <FormikProvider value={formik}>
@@ -233,18 +248,23 @@ const SignupForm = ({ auth, setAuth }) => {
             /> */}
           </Stack>
 
-          <Box component={motion.div} initial={{ opacity: 0, y: 20 }} animate={animate}>
+          {/* <Box component={motion.div} initial={{ opacity: 0, y: 20 }} animate={animate}> */}
             <LoadingButton
               fullWidth
               size="large"
               type="null"
               variant="contained"
-
-              // loading={isSubmitting}
+              loading={isSubmiting}
             >
               Sign up
             </LoadingButton>
-          </Box>
+            <Dialog open={showWaitingPopup} onClose={() => setShowWaitingPopup(false)}>
+        <DialogTitle>Processing Transaction...</DialogTitle>
+        <DialogContent>
+            <Box component={motion.div} initial={{ opacity: 0, y: 20 }} animate={animate}>
+           </Box>
+          </DialogContent>
+      </Dialog>
         </Stack>
       </Form>
     </FormikProvider>
