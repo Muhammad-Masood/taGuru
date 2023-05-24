@@ -69,7 +69,7 @@ export const feedback = [
   {
     id: "feedback-3",
     content: "I appreciate the transparency and fairness of the recruitment process on TA Guru, it's refreshing.",
-    name: "Emily Jones",
+    name: "Emile Jones",
     title: "",
     img: people03,
   },
