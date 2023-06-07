@@ -673,6 +673,7 @@ const Update = () => {
             </div>
           </div>
           <div className="col-12 col-xl-6">
+            <br/>
             <LiveDisplay values={values} />
           </div>
         </div>

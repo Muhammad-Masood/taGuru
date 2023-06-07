@@ -11,6 +11,7 @@ import themes from 'themes';
 
 // project imports
 import NavigationScroll from 'layout/NavigationScroll';
+import Chat from './landing/constants/chat'
 
 // ==============================|| APP ||============================== //
 
@@ -20,6 +21,7 @@ const App = () => {
     return (
         <StyledEngineProvider injectFirst>
             <ThemeProvider theme={themes(customization)}>
+                
                 <CssBaseline />
                 <NavigationScroll>
                     <Routes />

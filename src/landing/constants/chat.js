@@ -4,7 +4,7 @@ export class Chat extends Component {
   componentDidMount() {
     (function (d, m) {
       var kommunicateSettings = {
-        appId: "3048fcfee9c132d63943137253bfa52d6",
+        appId: "30ca78f917ad62b7a085047166954e29a",
         popupWidget: true,
         automaticChatOpenOnNavigation: true,
       };
@@ -17,10 +17,15 @@ export class Chat extends Component {
       window.kommunicate = m;
       m._globals = kommunicateSettings;
     })(document, window.kommunicate || {});
+    /* NOTE : Use web server to view HTML files as real-time update will not work if you directly open the HTML file in the browser. */
   }
 
   render() {
-    return <div></div>;
+    return (
+      <div>
+      
+      </div>
+    );
   }
 }
 

@@ -3431,6 +3431,14 @@
     "json-schema-to-ts" "1.6.4"
     "ts-morph" "12.0.0"
 
+"@vimeo/player@^2.20.1":
+  "integrity" "sha512-eoKkqsMY33RQn8lFtlUbb3uo+xDL3V8PTN01SdrJ1E9PI+5pLyqNGh/GO/2EyX9Vr6antLm0/v36ABF2rcwXIQ=="
+  "resolved" "https://registry.npmjs.org/@vimeo/player/-/player-2.20.1.tgz"
+  "version" "2.20.1"
+  dependencies:
+    "native-promise-only" "0.8.1"
+    "weakmap-polyfill" "2.0.4"
+
 "@web3-react/abstract-connector@^6.0.7":
   "integrity" "sha512-RhQasA4Ox8CxUC0OENc1AJJm8UTybu/oOCM61Zjg6y0iF7Z0sqv1Ai1VdhC33hrQpA8qSBgoXN9PaP8jKmtdqg=="
   "resolved" "https://registry.npmjs.org/@web3-react/abstract-connector/-/abstract-connector-6.0.7.tgz"
@@ -4945,7 +4953,7 @@
   "resolved" "https://registry.npmjs.org/core-js-pure/-/core-js-pure-3.27.2.tgz"
   "version" "3.27.2"
 
-"core-js@^3.19.2":
+"core-js@^3.19.2", "core-js@^3.6.5":
   "integrity" "sha512-9ashVQskuh5AZEZ1JdQWp1GqSoC1e1G87MzRqg2gIfVAQ7Qn9K+uFj8EcniUFA4P2NLZfV+TOlX1SzoKfo+s7w=="
   "resolved" "https://registry.npmjs.org/core-js/-/core-js-3.27.2.tgz"
   "version" "3.27.2"
@@ -9806,6 +9814,11 @@
   "resolved" "https://registry.npmjs.org/native-fetch/-/native-fetch-4.0.2.tgz"
   "version" "4.0.2"
 
+"native-promise-only@0.8.1":
+  "integrity" "sha512-zkVhZUA3y8mbz652WrL5x0fB0ehrBkulWT3TomAQ9iDtyXZvzKeEA6GPxAItBYeNYl5yngKRX612qHOhvMkDeg=="
+  "resolved" "https://registry.npmjs.org/native-promise-only/-/native-promise-only-0.8.1.tgz"
+  "version" "0.8.1"
+
 "natural-compare-lite@^1.4.0":
   "integrity" "sha512-Tj+HTDSJJKaZnfiuw+iaF9skdPpTo2GtEly5JHnWV/hfv2Qj/9RKsGISQtLh2ox3l5EAGw487hnBee0sIJ6v2g=="
   "resolved" "https://registry.npmjs.org/natural-compare-lite/-/natural-compare-lite-1.4.0.tgz"
@@ -9831,6 +9844,14 @@
   "resolved" "https://registry.npmjs.org/netmask/-/netmask-2.0.2.tgz"
   "version" "2.0.2"
 
+"newsapi@^2.4.1":
+  "integrity" "sha512-yw/aZBgDwNbNMqQ1V7XFKdW2jvL8Fh4qMiU0Awin87Rt6lbPnS8OuiLaL15Ws5X82/EXhzNf/djAlPHOWVgMJg=="
+  "resolved" "https://registry.npmjs.org/newsapi/-/newsapi-2.4.1.tgz"
+  "version" "2.4.1"
+  dependencies:
+    "core-js" "^3.6.5"
+    "node-fetch" "^2.6.0"
+
 "no-case@^3.0.4":
   "integrity" "sha512-fgAN3jGAh+RoxUGZHTSOLJIqUc2wmoBwGR4tbpNAKmmovFoWq0OdRkb0VkldReO2a2iBT/OEulG9XSUc10r3zg=="
   "resolved" "https://registry.npmjs.org/no-case/-/no-case-3.0.4.tgz"
@@ -9844,7 +9865,7 @@
   "resolved" "https://registry.npmjs.org/node-addon-api/-/node-addon-api-1.7.2.tgz"
   "version" "1.7.2"
 
-"node-fetch@*", "node-fetch@^2.6.7", "node-fetch@^2.6.8":
+"node-fetch@*", "node-fetch@^2.6.0", "node-fetch@^2.6.7", "node-fetch@^2.6.8":
   "integrity" "sha512-DJm/CJkZkRjKKj4Zi4BsKVZh3ValV5IR5s7LVZnW+6YMh0W1BfNA8XSs6DLMGYlId5F3KnA70uu2qepcR08Qqg=="
   "resolved" "https://registry.npmjs.org/node-fetch/-/node-fetch-2.6.9.tgz"
   "version" "2.6.9"
@@ -13588,6 +13609,11 @@
   "version" "1.0.1"
   dependencies:
     "defaults" "^1.0.3"
+
+"weakmap-polyfill@2.0.4":
+  "integrity" "sha512-ZzxBf288iALJseijWelmECm/1x7ZwQn3sMYIkDr2VvZp7r6SEKuT8D0O9Wiq6L9Nl5mazrOMcmiZE/2NCenaxw=="
+  "resolved" "https://registry.npmjs.org/weakmap-polyfill/-/weakmap-polyfill-2.0.4.tgz"
+  "version" "2.0.4"
 
 "web-vitals@0.2.4":
   "integrity" "sha512-6BjspCO9VriYy12z356nL6JBS0GYeEcA457YyRzD+dD6XYCQ75NKhcOHUMHentOE7OcVCIXXDvOm0jKFfQG2Gg=="

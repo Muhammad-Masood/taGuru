@@ -20,6 +20,7 @@ const Access = () => {
     if (password === correctPassword) {
       // Redirect the user to the landing page after successful password verification
       // <Link variant="subtitle2" component={RouterLink} to="/signup"></Link>
+     // authorized = true;
       window.location.href = "/landing";  //Replace "/landing" with the actual URL of your landing page
 
 

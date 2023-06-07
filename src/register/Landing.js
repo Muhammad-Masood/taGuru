@@ -1,6 +1,7 @@
 import styles from "../landing/style";
 import { Billing, Business, CardDeal, Clients, CTA, Footer, Navbar, Stats, Testimonials, Hero } from "../landing/components";
 import Chat from "../landing/constants/chat";
+import Access from "./access.js";
 
 const Landing = () => (
   <div className="bg-primary w-full overflow-hidden">

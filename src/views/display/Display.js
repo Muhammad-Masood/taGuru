@@ -351,7 +351,7 @@ function TransitionsModal({ imgLink }) {
   return (
     <>
       <span onClick={handleOpen} style={{ cursor: "pointer" }}>
-        <img style={{ margin: "10px" }} width={300} src={imgLink} alt="" />
+        <img style={{ margin: "10px" }} width={300} src={imgLink} alt="No CV to Display!" />
       </span>
       {/* <Button onClick={handleOpen}>Open modal</Button> */}
       <Modal
@@ -395,7 +395,7 @@ function TransitionsModal({ imgLink }) {
               </svg>
             </IconButton> */}
             <div style={{ height: "80vh", overflow: "auto" }}>
-              <img src={imgLink} alt="" width="100%" />
+              <img src={imgLink} alt="No CV to Display!" width="100%" />
             </div>
           </Box>
         </Fade>

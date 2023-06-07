@@ -30,6 +30,9 @@ const ContentStyle = styled(Box)({
   flexDirection: "column",
   borderRadius: "20px",
   background: "radial-gradient(circle at 10% 20%, rgb(87, 108, 117) 0%, rgb(37, 50, 55) 100.2%)",
+  "& input": {
+    color: "black",
+  },
 });
 
 let easing = [0.6, -0.05, 0.01, 0.99];

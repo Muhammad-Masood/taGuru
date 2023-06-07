@@ -44,9 +44,9 @@ const AuthenticationRoutes = {
     },
     {
       path: "landing",
-      element: <Landing/>,
-    }
-  ],
+      element: <Landing />,
+    },
+  ]
 };
 
 export default AuthenticationRoutes;
