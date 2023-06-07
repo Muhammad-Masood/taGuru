@@ -102,8 +102,8 @@ export const footerLinks = [
         link: "https://muhammads-organization-8.gitbook.io/untitled-1/",
       },
       {
-        name: "How it Works",
-        link: "",
+        name: "User Guide",
+        link: "https://muhammads-organization-8.gitbook.io/ta-guru/use-cases/user-guide",
       },
       {
         name: "Create",
