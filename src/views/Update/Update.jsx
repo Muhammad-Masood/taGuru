@@ -45,7 +45,7 @@ const Update = () => {
 
   const sections = {
     basicInfo: "Personal Details",
-    workExp: "Employement",
+    workExp: "Employment",
 
     education: "Education",
     achievement: "Hobbies",
@@ -311,7 +311,7 @@ const Update = () => {
                 sx={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}
               >
                 <Typography sx={{ fontWeight: "bold", color: "white" }}>
-                  Job expirence {index + 1} &emsp;{" "}
+                  Job Experience {index + 1} &emsp;{" "}
                   <DeleteIcon
                     onClick={(e) => {
                       e.preventDefault();

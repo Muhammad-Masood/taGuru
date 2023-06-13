@@ -168,7 +168,22 @@ const Display = () => {
   console.log({ userCV });
 
   return (
-    <div style={{ display: "flex", justifyContent: "center", alignItems: "center", width: "100%", height: "100%" }}>
+    <div>
+       <div style={{ position: "relative" }}>
+    <a href={userCV} download="userCV.jpg" style={{ textDecoration: "none", position:"absolute", top: 0, right: 0, marginRight:"20px"}}>
+    <button style={{ 
+      backgroundColor: "blue",
+      color: "white",
+      padding: "10px 20px",
+      border: "none",
+      borderRadius: "4px",
+      cursor: "pointer",
+      transition: "background-color 0.3s ease",
+    }}
+    >Download CV</button>
+  </a>
+  </div>
+    <div style={{ display: "flex", justifyContent: "center", alignItems: "center", width: "100%", height: "100%"  }}>
       {/* {LoggedInUser.email && LoggedInUser.isCand ? "cad" :  "admin"} */}
       {active && LoggedInUser?.email && LoggedInUser?.isCand == true && (
         <>
@@ -324,6 +339,7 @@ const Display = () => {
           </div>
         </>
       )}
+    </div>
     </div>
   );
 };

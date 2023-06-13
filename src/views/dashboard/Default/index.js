@@ -5,6 +5,7 @@ import { Grid } from '@mui/material';
 import TotalGrowthBarChart from './TotalGrowthBarChart';
 import { gridSpacing } from 'store/constant';
 import Chat from "../../../landing/constants/chat";
+import br from './br.jpg';
 // ==============================|| DEFAULT DASHBOARD ||============================== //
 
 const Dashboard = () => {
@@ -14,18 +15,9 @@ const Dashboard = () => {
     }, []);
 
     return (
-        <Grid container spacing={gridSpacing}>
-                <Grid container spacing={gridSpacing}>
-                    <Grid item lg={4} md={6} sm={6} xs={12}>
-                        <Chat/>
-                 </Grid>
-             </Grid>
-                 <Grid container spacing={gridSpacing}>
-                     <Grid item xs={12} md={8}>
-                         <TotalGrowthBarChart isLoading={isLoading} />
-                     </Grid>
-                 </Grid>
-             </Grid>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+        <img src={br} alt="Total Growth Chart" />
+      </div>
     );
 };
 
