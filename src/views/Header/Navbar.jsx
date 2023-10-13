@@ -45,9 +45,14 @@ function BasicExample() {
       alert("MetaMask is Not installed!");
     } else {
       try {
-        await activate(Injected);
-        localStorage.setItem("isWalletConnected", true);
-        call();
+        const chainId = await Injected.getChainId();
+        if(chainId != "0x13881"){
+          alert("Please switch to mumbai testnet.");
+        } else {
+          await activate(Injected);
+          localStorage.setItem("isWalletConnected", true);
+          call();
+        }
       } catch (error) {
         console.log(error);
       }
@@ -60,6 +65,7 @@ function BasicExample() {
       localStorage.setItem("isWalletConnected", false);
     } catch (error) {}
   };
+
   useEffect(() => {
     const connectWalletOnPageLoad = async () => {
       if (localStorage?.getItem("isWalletConnected") === "true") {
@@ -72,6 +78,7 @@ function BasicExample() {
     };
     connectWalletOnPageLoad();
   }, []);
+
   return (
     <>
       {/* <IntegrationWallets /> */}

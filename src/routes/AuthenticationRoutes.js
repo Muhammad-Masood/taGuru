@@ -6,7 +6,6 @@ import MinimalLayout from "layout/MinimalLayout";
 import Signup from "register/Signup";
 import Login from "register/Login";
 import Landing from "register/Landing";
-import Access from "register/access";
 // import PrivateRoute from "landing/PrivateRoute";
 
 // login option 3 routing
@@ -30,8 +29,7 @@ const AuthenticationRoutes = {
     {
       path: "/",
       element: (
-        <Access>
-        </Access>
+        <Landing/>
         )
     },
     {
@@ -42,10 +40,10 @@ const AuthenticationRoutes = {
       path: "signup",
       element: <Signup />,
     },
-    {
-      path: "landing",
-      element: <Landing />,
-    },
+    // {
+    //   path: "landing",
+    //   element: <Landing />,
+    // },
   ]
 };
 

@@ -47,12 +47,12 @@ const Navbar = () => {
             Whitepaper
           </a>
         </div>
-        <div
+        <button
           style={{ color: "white", backgroundColor: "#62C4C8" }}
-          className="login ml-5 bg-white text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+          className="login ml-5 bg-white text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow cursor-pointer"
         >
           <a href="/login">Login</a>
-        </div>
+        </button>
       </ul>
 
       <div className="sm:hidden flex flex-1 justify-end items-center">

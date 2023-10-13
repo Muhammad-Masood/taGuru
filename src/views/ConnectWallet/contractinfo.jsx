@@ -1,4 +1,4 @@
-export const contractadd = "0x6f621A8B50Ac91eA058d297CDb0Af0882EbfeeE4";
+export const contractadd = "0x07CB40A3C44E39024750eEf1d316f78E687ab6Ec";
 
 export const contractabi = [
 	{
