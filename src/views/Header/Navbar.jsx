@@ -18,27 +18,16 @@ function BasicExample() {
       const signer = await library?.getSigner(account);
       const cont = await new ethers.Contract(contractadd, contractabi, signer);
       const res = await cont.getCandCvs();
-      console.log({ res });
-
       let imgsarr = [];
       for (const item of res) {
-        console.log({ item });
         const ressss = await axios.get(item);
-        console.log(ressss.data);
         imgsarr.push(ressss?.data);
       }
-      console.log({ imgsarr });
       setCondidatesCVS(imgsarr);
     }
   };
 
-  // useEffect(() => {
-  //   call();
-  // }, []);
   const { active, activate, library, account, deactivate, chainID } = useWeb3React();
-
-  console.log({ account });
-  console.log({ active });
 
   async function conToMetaMask() {
     if (typeof window.ethereum == "undefined") {
@@ -47,7 +36,7 @@ function BasicExample() {
       try {
         const chainId = await Injected.getChainId();
         if(chainId != "0x13881"){
-          alert("Please switch to mumbai testnet.");
+          alert("Please switch to Mumbai Testnet.");
         } else {
           await activate(Injected);
           localStorage.setItem("isWalletConnected", true);
@@ -59,24 +48,25 @@ function BasicExample() {
     }
   }
 
-  const disWallet = async () => {
+  const disWallet = () => {
     try {
-      await deactivate();
+      deactivate();
       localStorage.setItem("isWalletConnected", false);
     } catch (error) {}
   };
 
   useEffect(() => {
     const connectWalletOnPageLoad = async () => {
-      if (localStorage?.getItem("isWalletConnected") === "true") {
+      if (localStorage?.getItem("isWalletConnected") === "false") {
         try {
-          await activate(Injected);
+          console.log("connecting wallet...");
+          await conToMetaMask();
         } catch (ex) {
           console.log(ex);
         }
       }
     };
-    connectWalletOnPageLoad();
+    connectWalletOnPageLoad().then(() => console.log("wallet connected.")).catch((error) => console.log(error));
   }, []);
 
   return (
